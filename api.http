@@ -1,0 +1,11 @@
+POST http://localhost:3000/todo
+Content-Type: application/json
+
+{
+  "name": "asd",
+  "isChecked": true
+}
+
+###
+DELETE http://localhost:3000/todo/7a43
+Content-Type: application/json
