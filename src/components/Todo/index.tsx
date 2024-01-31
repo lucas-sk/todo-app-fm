@@ -1,9 +1,10 @@
+import { Button } from '@/components/ui/button'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { UseTodo } from '../../context/TodoContext'
-import { Button } from '../Button'
-import { Checkbox } from '../CheckBox'
 import { Cross } from '../Cross'
+import { Checkbox } from '../ui/checkbox'
+import { Label } from '../ui/label'
 
 interface todoProps {
   id: string
@@ -25,6 +26,9 @@ export const Todo = ({ id, check, name }: todoProps) => {
   function handleRemoveTodo(id: string) {
     removeTodo(id)
   }
+  function handleToggleTodo(id: string) {
+    toggleTodo(id)
+  }
 
   return (
     <div
@@ -35,12 +39,24 @@ export const Todo = ({ id, check, name }: todoProps) => {
       className="flex items-center justify-between border-b-2 border-zinc-900 bg-gray-700 px-4 py-[18px] hover:cursor-pointer"
     >
       <form>
-        <label className="flex items-center  gap-2 hover:cursor-pointer">
-          <Checkbox checked={check} onClick={() => toggleTodo(id)} />
+        <Label
+          htmlFor="check"
+          className="flex items-center  gap-2 hover:cursor-pointer"
+        >
+          <Checkbox
+            id="check"
+            checked={check}
+            onClick={() => handleToggleTodo(id)}
+          />
           <span className="text-white-500">{name}</span>
-        </label>
+        </Label>
       </form>
-      <Button onClick={() => handleRemoveTodo(id)}>
+      <Button
+        variant={'ghost'}
+        size={'icon'}
+        className="hover:text-white-700"
+        onClick={() => handleRemoveTodo(id)}
+      >
         <Cross />
       </Button>
     </div>

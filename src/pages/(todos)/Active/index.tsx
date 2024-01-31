@@ -1,7 +1,9 @@
+import { Button } from '@/components/ui/button'
 import {
   DndContext,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
+  TouchSensor,
   closestCenter,
   useSensor,
   useSensors,
@@ -11,7 +13,6 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { Button } from '../../../components/Button'
 import { Navigation } from '../../../components/Navigation'
 import { Todo } from '../../../components/Todo'
 import { UseTodo } from '../../../context/TodoContext'
@@ -19,10 +20,23 @@ import { UseTodo } from '../../../context/TodoContext'
 export function TodosActive() {
   const { todos, removeAllTodosComplete, reOrderTodoList } = UseTodo()
 
-  const filteredActiveTodos = todos.filter((todo) => todo.check === false)
+  const filteredActiveTodos = todos.filter((todo) => todo.isChecked === false)
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(MouseSensor, {
+      // Require the mouse to move by 10 pixels before activating
+      activationConstraint: {
+        delay: 5000,
+        distance: 10,
+      },
+    }),
+    useSensor(TouchSensor, {
+      // Press delay of 250ms, with tolerance of 5px of movement
+      activationConstraint: {
+        delay: 5000,
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
@@ -48,23 +62,12 @@ export function TodosActive() {
             <Todo
               key={todo.id}
               id={todo.id}
-              check={todo.check}
+              check={todo.isChecked}
               name={todo.name}
             />
           ))}
         </SortableContext>
       </DndContext>
-      {/* {filteredActiveTodos.length > 0 &&
-        filteredActiveTodos.map((todo) => {
-          return (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              check={todo.check}
-              name={todo.name}
-            />
-          )
-        })} */}
       <div className="flex w-full justify-between bg-gray-700 px-4 py-[18px] text-zinc-500">
         <p>{filteredActiveTodos.length} Items left</p>
         <Button onClick={removeAllTodosComplete}>Clear Completed</Button>

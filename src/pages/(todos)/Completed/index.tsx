@@ -1,4 +1,4 @@
-import { Button } from '../../../components/Button'
+import { Button } from '@/components/ui/button'
 import { Navigation } from '../../../components/Navigation'
 import { Todo } from '../../../components/Todo'
 import { UseTodo } from '../../../context/TodoContext'

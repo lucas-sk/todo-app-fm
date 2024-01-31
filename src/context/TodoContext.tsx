@@ -1,6 +1,5 @@
 import { arrayMove } from '@dnd-kit/sortable'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { http } from '../lib/http'
 
 interface Todo {
   id: string
@@ -40,68 +39,39 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
   })
 
   const addTodo = async ({ name }: TodoFormData) => {
-    try {
-      const { data } = await http.post<Todo>('/todo', {
-        name,
-        isChecked: false,
-      })
+    const todo = {
+      id: crypto.randomUUID(),
+      name,
+      isChecked: false,
+    }
 
-      setTodos((state) => [
-        ...state,
-        {
-          id: data.id,
-          name: data.name,
-          isChecked: data.isChecked,
-        },
-      ])
-    } catch (e) {}
+    setTodos((state) => [...state, todo])
   }
 
   const removeTodo = async (id: string) => {
-    try {
-      await http.delete<Todo>(`/todo/${id}`)
-
-      setTodos((state) => {
-        const todo = state.findIndex((todo) => todo.id === id)
-
-        if (todo < 0) return state
-
-        return state.splice(todo, 1)
-      })
-    } catch (e) {}
+    setTodos((state) => {
+      const isTodoExistState = state.findIndex((todo) => todo.id === id)
+      if (isTodoExistState === -1) return state
+      return state.filter((todo) => todo.id !== state[isTodoExistState].id)
+    })
   }
 
   const removeAllTodosComplete = async () => {
-    try {
-      todos.forEach(async (item) => {
-        if (item.isChecked) {
-          await http.delete(`/todo/${item.id}`)
-        }
-      })
-      setTodos((state) => {
-        return state.filter((todo) => todo.isChecked !== true)
-      })
-    } catch (e) {}
+    setTodos((state) => {
+      return state.filter((todo) => todo.isChecked !== true)
+    })
   }
 
   const toggleTodo = async (id: string) => {
-    try {
-      const todo = todos.findIndex((todo) => todo.id === id)
+    setTodos((state) => {
+      const todo = state.findIndex((todo) => todo.id === id)
 
-      if (todo < 0) return
+      if (todo === -1) return state
 
-      await http.patch<Todo>(`/todo/${id}`, {
-        isChecked: !todos[todo].isChecked,
-      })
+      state[todo].isChecked = !state[todo].isChecked
 
-      setTodos((state) => {
-        const todo = state.findIndex((todo) => todo.id === id)
-
-        state[todo].isChecked = !state[todo].isChecked
-
-        return [...state]
-      })
-    } catch (e) {}
+      return [...state]
+    })
   }
 
   const reOrderTodoList = ({ activeId, overId }: TodoReOrderData) => {

@@ -1,7 +1,9 @@
+import { Button } from '@/components/ui/button'
 import {
   DndContext,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
+  TouchSensor,
   closestCenter,
   useSensor,
   useSensors,
@@ -11,7 +13,6 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { Button } from '../../../components/Button'
 import { Navigation } from '../../../components/Navigation'
 import { Todo } from '../../../components/Todo'
 import { UseTodo } from '../../../context/TodoContext'
@@ -20,7 +21,20 @@ export function Home() {
   const { todos, removeAllTodosComplete, reOrderTodoList } = UseTodo()
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(MouseSensor, {
+      // Require the mouse to move by 10 pixels before activating
+      activationConstraint: {
+        delay: 5000,
+        distance: 10,
+      },
+    }),
+    useSensor(TouchSensor, {
+      // Press delay of 250ms, with tolerance of 5px of movement
+      activationConstraint: {
+        delay: 5000,
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
@@ -57,7 +71,9 @@ export function Home() {
       </DndContext>
       <div className="flex w-full justify-between bg-gray-700 px-4 py-[18px] text-zinc-500">
         <p>{todos.length} Items left</p>
-        <Button onClick={removeAllTodosComplete}>Clear Completed</Button>
+        <Button variant={'ghost'} onClick={removeAllTodosComplete}>
+          Clear Completed
+        </Button>
       </div>
       <Navigation />
     </div>
