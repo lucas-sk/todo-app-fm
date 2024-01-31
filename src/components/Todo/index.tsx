@@ -38,10 +38,10 @@ export const Todo = ({ id, check, name }: todoProps) => {
       {...listeners}
       className="flex items-center justify-between border-b-2 border-zinc-900 bg-gray-700 px-4 py-[18px] hover:cursor-pointer"
     >
-      <form>
+      <form className="w-full ">
         <Label
           htmlFor="check"
-          className="flex items-center  gap-2 hover:cursor-pointer"
+          className="flex items-center w-full   gap-2 hover:cursor-pointer"
         >
           <Checkbox
             id="check"

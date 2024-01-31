@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Footer } from '@/components/Footer'
 import {
   DndContext,
   KeyboardSensor,
@@ -18,7 +18,7 @@ import { Todo } from '../../../components/Todo'
 import { UseTodo } from '../../../context/TodoContext'
 
 export function Home() {
-  const { todos, removeAllTodosComplete, reOrderTodoList } = UseTodo()
+  const { todos, reOrderTodoList } = UseTodo()
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
@@ -69,12 +69,7 @@ export function Home() {
           ))}
         </SortableContext>
       </DndContext>
-      <div className="flex w-full justify-between bg-gray-700 px-4 py-[18px] text-zinc-500">
-        <p>{todos.length} Items left</p>
-        <Button variant={'ghost'} onClick={removeAllTodosComplete}>
-          Clear Completed
-        </Button>
-      </div>
+      <Footer todosLength={todos.length} />
       <Navigation />
     </div>
   )
