@@ -2,7 +2,7 @@ import { SVGAttributes } from 'react';
 
 interface MoonProps extends SVGAttributes<HTMLOrSVGElement> {}
 
-const Moon = (props: MoonProps) => (
+export const Moon = (props: MoonProps) => (
   <svg
     width={26}
     height={26}
