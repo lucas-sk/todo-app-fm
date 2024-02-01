@@ -41,11 +41,12 @@ export const Todo = ({ id, check, name }: todoProps) => {
       <form className="w-full ">
         <Label
           htmlFor="check"
-          className="flex items-center w-full   gap-2 hover:cursor-pointer"
+          className="flex items-center w-full gap-2 hover:cursor-pointer"
         >
           <Checkbox
             id="check"
             checked={check}
+            className="rounded-full hover:light-border-gradient dark:hover:dark-border-gradient"
             onClick={() => handleToggleTodo(id)}
           />
           <span className="text-white-500">{name}</span>

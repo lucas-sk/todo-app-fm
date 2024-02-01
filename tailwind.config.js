@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
@@ -71,6 +73,12 @@ module.exports = {
          Bright Blue:
          */
         },
+        initial: {
+          500: '#57DDFF',
+        },
+        end: {
+          500: '#C058F3',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -93,5 +101,25 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), function({ addUtilities }) {
+    const newUtilities = {
+      ".dark-border-gradient": {
+        background: "transparent",
+        "background-image": "linear-gradient(90deg, #25273C, #25273C), linear-gradient(90deg, hsl(289, 65%, 64%), hsl(226, 78%, 67%))",
+        "background-clip": "padding-box, border-box",
+        "background-origin": "border-box",
+        "border": "1px solid transparent",
+        "border-radius": "9999px",
+      },
+      ".light-border-gradient": {
+        background: "transparent",
+        "background-image": "linear-gradient(90deg, #FFF, #FFF), linear-gradient(90deg, hsl(289, 65%, 64%), hsl(226, 78%, 67%))",
+        "background-clip": "padding-box, border-box",
+        "background-origin": "border-box",
+        "border": "1px solid transparent",
+        "border-radius": "9999px",
+      }
+    };
+    addUtilities(newUtilities, ['responsive', 'hover'])
+  }],
 }
