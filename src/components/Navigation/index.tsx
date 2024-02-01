@@ -8,7 +8,7 @@ export function Navigation() {
       <Link
         to="/"
         className={`hover:text-white-700 ${
-          pathname === '/' ? 'text-white-900' : ''
+          pathname === '/' ? 'text-initial-500' : ''
         }`}
       >
         All
@@ -16,7 +16,7 @@ export function Navigation() {
       <Link
         to="/active"
         className={`hover:text-white-700 ${
-          pathname === '/active' ? 'text-white-900' : ''
+          pathname === '/active' ? 'text-initial-500' : ''
         }`}
       >
         Active
@@ -24,7 +24,7 @@ export function Navigation() {
       <Link
         to="/completed"
         className={`hover:text-white-700 ${
-          pathname === '/completed' ? 'text-white-900' : ''
+          pathname === '/completed' ? 'text-initial-500' : ''
         }`}
       >
         Completed
