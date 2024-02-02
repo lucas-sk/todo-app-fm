@@ -49,7 +49,7 @@ export const Todo = ({ id, check, name }: todoProps) => {
             className="rounded-full data-[state=checked]:light-border-and-bg-gradient hover:light-border-gradient dark:data-[state=checked]:dark-border-and-bg-gradient dark:hover:dark-border-gradient"
             onClick={() => handleToggleTodo(id)}
           />
-          <span className="text-light-900 dark:text-dark-300">{name}</span>
+          <span className={`text-light-900 dark:text-dark-300 ${check && 'line-through'}`}>{name}</span>
         </Label>
       </form>
       <Button
