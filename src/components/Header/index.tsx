@@ -12,7 +12,7 @@ export const Header = () => {
 
   return (
     <header className='flex justify-between items-center'>
-      <h3 className=' text-[1.625rem] font-bold  tracking-[0.4em] text-white-700'>
+      <h3 className=' text-[1.625rem] font-bold  tracking-[0.4em] text-light-200 dark:text-dark-100'>
         TODO
       </h3>
        <Button onClick={handleToggleTheme} className='bg-transparent shadow-transparent hover:bg-transparent' size={'icon'}>

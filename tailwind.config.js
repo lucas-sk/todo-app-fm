@@ -56,11 +56,6 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        white: {
-          900: '#FAFAFA',
-          700: '#E4E5F1',
-          500: '#CACDE8',
-        },
         light: {
           900: '#484B6A',
           700: '#9394A5',
@@ -76,17 +71,6 @@ module.exports = {
           500: '#777A92',
           300: '#CACDE8',
           100: '#E4E5F1',
-        },
-        gray: {
-          900: '#161722',
-          700: '#25273C',
-        },
-        zinc: {
-          500: '#777A92',
-          600: '#9394A5',
-          700: '#484B6A',
-          800: '#4D5066',
-          900: '#393A4C',
         },
         initial: {
           500: '#57DDFF',

@@ -36,7 +36,7 @@ export const Todo = ({ id, check, name }: todoProps) => {
       style={style}
       {...attributes}
       {...listeners}
-      className="flex items-center justify-between border-b-2 border-light-300 dark:border-zinc-900 bg-light-100 dark:bg-dark-800 px-4 py-[18px] hover:cursor-pointer"
+      className="flex items-center justify-between border-b-2 border-light-300 dark:border-dark-600 bg-light-100 dark:bg-dark-800 px-4 py-[18px] hover:cursor-pointer"
     >
       <form className="w-full ">
         <Label
