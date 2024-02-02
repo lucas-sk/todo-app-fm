@@ -16,8 +16,8 @@ export const Header = () => {
         TODO
       </h3>
        <Button onClick={handleToggleTheme} className='bg-transparent shadow-transparent hover:bg-transparent' size={'icon'}>
-         {theme === 'dark' && <Sun className='hover:text-white-500'/>}
-         {theme === 'light' && <Moon className='hover:text-white-500'/>}
+         {theme === 'dark' && <Sun className='dark:text-dark-100 dark:hover:text-dark-300'/>}
+         {theme === 'light' && <Moon className='text-light-100 hover:text-light-200'/>}
       </Button>
     </header>
   );

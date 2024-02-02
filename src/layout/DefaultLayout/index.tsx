@@ -5,15 +5,15 @@ import { TodoForm } from '../../components/TodoForm'
 
 export function DefaultLayout() {
   return (
-    <div className="flex min-h-screen w-screen max-w-full flex-col text-white-500	items-center bg-gray-900">
+    <div className="font-sans antialiased min-h-screen text-light-900 dark:text-dark-100 bg-light-100 dark:bg-dark-900">
       <Picture />
-      <main className="relative z-10 mx-6 flex h-auto w-80 max-w-lg flex-col gap-10 pt-12">
+      <main className="mx-auto my-0 relative z-10 flex h-auto w-80 max-w-lg flex-col gap-10 pt-6">
         <Header />
         <div className="flex flex-col gap-4">
           <TodoForm />
           <Outlet />
         </div>
-        <p className="text-center text-zinc-700">
+        <p className="text-center text-light-700 dark:text-dark-800">
           Drag and drop to reorder list
         </p>
       </main>

@@ -19,6 +19,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Josefin Sans', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -58,6 +61,22 @@ module.exports = {
           700: '#E4E5F1',
           500: '#CACDE8',
         },
+        light: {
+          900: '#484B6A',
+          700: '#9394A5',
+          300: '#D2D3DB',
+          200: '#E4E5F1',
+          100: '#FAFAFA',
+        },
+        dark: {
+          900: '#161722',
+          800: '#25273C',
+          700: '#4D5066',
+          600: '#393A4C',
+          500: '#777A92',
+          300: '#CACDE8',
+          100: '#E4E5F1',
+        },
         gray: {
           900: '#161722',
           700: '#25273C',
@@ -68,10 +87,6 @@ module.exports = {
           700: '#484B6A',
           800: '#4D5066',
           900: '#393A4C',
-          /*
-         Check Background '#57DDFF': '#C058F3'
-         Bright Blue:
-         */
         },
         initial: {
           500: '#57DDFF',
@@ -105,7 +120,15 @@ module.exports = {
     const newUtilities = {
       ".dark-border-gradient": {
         background: "transparent",
-        "background-image": "linear-gradient(90deg, #25273C, #25273C), linear-gradient(90deg, hsl(289, 65%, 64%), hsl(226, 78%, 67%))",
+        "background-image": "linear-gradient(135deg, #25273C, #25273C), linear-gradient(135deg, #57DDFF,  #C058F3)",
+        "background-clip": "padding-box, border-box",
+        "background-origin": "border-box",
+        "border": "1px solid transparent",
+        "border-radius": "9999px",
+      },
+      ".dark-border-and-bg-gradient": {
+        background: "transparent",
+        "background-image": "linear-gradient(135deg, #57DDFF,  #C058F3), linear-gradient(135deg, #57DDFF,  #C058F3)",
         "background-clip": "padding-box, border-box",
         "background-origin": "border-box",
         "border": "1px solid transparent",
@@ -113,12 +136,20 @@ module.exports = {
       },
       ".light-border-gradient": {
         background: "transparent",
-        "background-image": "linear-gradient(90deg, #FFF, #FFF), linear-gradient(90deg, hsl(289, 65%, 64%), hsl(226, 78%, 67%))",
+        "background-image": "linear-gradient(135deg, #FFF, #FFF), linear-gradient(135deg, #57DDFF,  #C058F3)",
         "background-clip": "padding-box, border-box",
         "background-origin": "border-box",
         "border": "1px solid transparent",
         "border-radius": "9999px",
-      }
+      },
+      ".light-border-and-bg-gradient": {
+        background: "transparent",
+        "background-image": "linear-gradient(315deg, #57DDFF,  #C058F3), linear-gradient(315deg, #57DDFF,  #C058F3)",
+        "background-clip": "padding-box, border-box",
+        "background-origin": "border-box",
+        "border": "1px solid transparent",
+        "border-radius": "9999px",
+      },
     };
     addUtilities(newUtilities, ['responsive', 'hover'])
   }],

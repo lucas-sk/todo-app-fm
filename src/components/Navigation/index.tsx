@@ -4,10 +4,10 @@ export function Navigation() {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex w-full justify-center gap-4 bg-gray-700 px-4 py-[18px] text-zinc-500">
+    <div className="flex w-full justify-center shadow-lg gap-4 bg-light-100 dark:bg-dark-800 px-4 py-[18px] text-zinc-500">
       <Link
         to="/"
-        className={`hover:text-white-700 ${
+        className={`hover:text-light-900 dark:hover:text-white-700 dark:text-dark-500 ${
           pathname === '/' ? 'text-initial-500' : ''
         }`}
       >
@@ -15,7 +15,7 @@ export function Navigation() {
       </Link>
       <Link
         to="/active"
-        className={`hover:text-white-700 ${
+        className={`hover:text-light-900 dark:hover:text-white-700 dark:text-dark-500 ${
           pathname === '/active' ? 'text-initial-500' : ''
         }`}
       >
@@ -23,7 +23,7 @@ export function Navigation() {
       </Link>
       <Link
         to="/completed"
-        className={`hover:text-white-700 ${
+        className={`hover:text-light-900 dark:hover:text-white-700 dark:text-dark-500 ${
           pathname === '/completed' ? 'text-initial-500' : ''
         }`}
       >

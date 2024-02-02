@@ -68,7 +68,7 @@ export function TodosActive() {
           ))}
         </SortableContext>
       </DndContext>
-      <Footer todosLength={filteredActiveTodos.length} />
+      <Footer todosLength={filteredActiveTodos.length}/>
       <Navigation />
     </div>
   )

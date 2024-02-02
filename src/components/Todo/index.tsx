@@ -36,26 +36,26 @@ export const Todo = ({ id, check, name }: todoProps) => {
       style={style}
       {...attributes}
       {...listeners}
-      className="flex items-center justify-between border-b-2 border-zinc-900 bg-gray-700 px-4 py-[18px] hover:cursor-pointer"
+      className="flex items-center justify-between border-b-2 border-light-300 dark:border-zinc-900 bg-light-100 dark:bg-dark-800 px-4 py-[18px] hover:cursor-pointer"
     >
       <form className="w-full ">
         <Label
-          htmlFor="check"
+          htmlFor={id}
           className="flex items-center w-full gap-2 hover:cursor-pointer"
         >
           <Checkbox
-            id="check"
+            id={id}
             checked={check}
-            className="rounded-full hover:light-border-gradient dark:hover:dark-border-gradient"
+            className="rounded-full data-[state=checked]:light-border-and-bg-gradient hover:light-border-gradient dark:data-[state=checked]:dark-border-and-bg-gradient dark:hover:dark-border-gradient"
             onClick={() => handleToggleTodo(id)}
           />
-          <span className="text-white-500">{name}</span>
+          <span className="text-light-900 dark:text-dark-300">{name}</span>
         </Label>
       </form>
       <Button
         variant={'ghost'}
         size={'icon'}
-        className="hover:text-white-700"
+        className="text-light-900 hover:text-light-700 dark:text-dark-700 dark:hover:text-dark-500"
         onClick={() => handleRemoveTodo(id)}
       >
         <Cross />
