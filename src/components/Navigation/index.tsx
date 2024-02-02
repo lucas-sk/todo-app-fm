@@ -4,7 +4,7 @@ export function Navigation() {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex w-full justify-center shadow-lg gap-4 bg-light-100 dark:bg-dark-800 px-4 py-[18px] text-dark-500">
+    <div className="rounded-sm flex w-full justify-center shadow-lg gap-4 bg-light-100 dark:bg-dark-800 px-4 py-[18px] text-dark-500">
       <Link
         to="/"
         className={`hover:text-light-900 dark:hover:text-dark-100 dark:text-dark-500 ${

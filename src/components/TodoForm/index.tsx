@@ -20,7 +20,6 @@ export function TodoForm() {
   return (
     <form
       className="rounded-sm flex items-center gap-2 shadow-lg dark:bg-dark-800 bg-light-100 px-5 py-4"
-      action=""
       onSubmit={(e) => handleSubmitaddTodo(e)}
     >
       <div className="h-5 w-5 rounded-full border border-light-300 dark:border-dark-700" />
