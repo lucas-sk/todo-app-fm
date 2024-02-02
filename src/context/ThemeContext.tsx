@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface ThemeContextType {
   theme: 'dark' | 'light'
@@ -20,15 +20,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   })
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
+
   function toggleTheme() {
     if (theme === 'light') {
       localStorage.theme = 'dark';
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
+      setTheme(() => 'dark');
     } else {
       localStorage.theme = 'light';
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
+      setTheme(() => 'light');
     }
   }
 
