@@ -12,11 +12,11 @@ export const Picture = () => {
 
   return (
     <picture className='absolute z-0'>
-      <source media='(min-width: 376px)' srcSet={srcSet} />
+      <source media='(min-width: 780px)' srcSet={srcSet} />
       <img
         src={srcImg}
         alt='background mobile dark'
-        className='w-full h-full object-cover object-center max-h-80'
+        className='w-screen h-full object-cover object-center max-h-80'
       />
     </picture>
   )
