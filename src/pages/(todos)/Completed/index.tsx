@@ -50,14 +50,16 @@ export function TodosCompleted() {
         onDragEnd={handleDragEnd}
       >
         <SortableContext items={todos} strategy={verticalListSortingStrategy}>
-          {filteredTodosCompleted.map((todo) => (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              check={todo.isChecked}
-              name={todo.name}
-            />
-          ))}
+          <div className='first:rounded-t-sm'>
+            {filteredTodosCompleted.map((todo) => (
+              <Todo
+                key={todo.id}
+                id={todo.id}
+                check={todo.isChecked}
+                name={todo.name}
+              />
+            ))}
+          </div>
         </SortableContext>
       </DndContext>
       <Footer todosLength={filteredTodosCompleted.length} />

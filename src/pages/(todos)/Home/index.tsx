@@ -48,14 +48,16 @@ export function Home() {
         onDragEnd={handleDragEnd}
       >
         <SortableContext items={todos} strategy={verticalListSortingStrategy}>
-          {todos.map((todo) => (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              check={todo.isChecked}
-              name={todo.name}
-            />
-          ))}
+          <div className='first:rounded-t-sm'>
+            {todos.map((todo) => (
+              <Todo
+                key={todo.id}
+                id={todo.id}
+                check={todo.isChecked}
+                name={todo.name}
+              />
+            ))}
+          </div>
         </SortableContext>
       </DndContext>
       <Footer todosLength={todos.length} />
