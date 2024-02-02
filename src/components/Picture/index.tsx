@@ -7,29 +7,17 @@ import bgLightMobile from '../../assets/bg-mobile-light.jpg'
 export const Picture = () => {
   const { theme } = useTheme()
 
+  const srcSet = theme === 'dark' ? bgDarkDesktop : bgLightDesktop
+  const srcImg = theme === 'dark' ? bgDarkMobile : bgLightMobile
+
   return (
     <picture className='absolute z-0'>
-      {theme === 'dark' &&
-      <>
-        <source media='(min-width: 376px)' srcSet={bgDarkDesktop} />
-        <img
-          src={bgDarkMobile}
-          alt='background mobile dark'
-          className='h-auto max-w-full '
-        />
-      </>
-      }
-      {theme === 'light' &&
-      <>
-        <source media='(min-width: 376px)' srcSet={bgLightDesktop} />
-       <img
-         src={bgLightMobile}
-          alt='background mobile dark'
-          className='h-auto max-w-full '
-        />
-      </>
-      }
-
+      <source media='(min-width: 376px)' srcSet={srcSet} />
+      <img
+        src={srcImg}
+        alt='background mobile dark'
+        className='w-full h-full object-cover object-center max-h-80'
+      />
     </picture>
   )
 }
