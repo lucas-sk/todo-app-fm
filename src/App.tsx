@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { AppTest } from './components/test'
 import { ThemeProvider } from './context/ThemeContext'
 import { TodoProvider } from './context/TodoContext'
 import { DefaultLayout } from './layout/DefaultLayout'
@@ -25,10 +24,6 @@ const router = createBrowserRouter([
         element: <TodosCompleted />,
       },
     ],
-  },
-  {
-    path: '/test',
-    element: <AppTest />,
   },
 ])
 
