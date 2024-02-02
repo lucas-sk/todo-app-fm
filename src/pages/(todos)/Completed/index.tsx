@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer'
 import {
   DndContext,
+  DragEndEvent,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
@@ -23,30 +24,21 @@ export function TodosCompleted() {
   const filteredTodosCompleted = todos.filter((todo) => todo.isChecked === true)
 
   const sensors = useSensors(
-    useSensor(MouseSensor, {
-      // Require the mouse to move by 10 pixels before activating
-      activationConstraint: {
-        delay: 5000,
-        distance: 10,
-      },
-    }),
-    useSensor(TouchSensor, {
-      // Press delay of 250ms, with tolerance of 5px of movement
-      activationConstraint: {
-        delay: 5000,
-        tolerance: 5,
-      },
-    }),
+    useSensor(MouseSensor, {}),
+    useSensor(TouchSensor, {}),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
   )
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
-
+    if (!over) return
     if (active.id !== over.id) {
-      reOrderTodoList(active.id, over.id)
+      reOrderTodoList({
+        activeId: active.id,
+        overId: over.id,
+      })
     }
   }
 

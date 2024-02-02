@@ -1,3 +1,4 @@
+import { UniqueIdentifier } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
 import { createContext, useContext, useEffect, useState } from 'react'
 
@@ -12,8 +13,8 @@ interface TodoFormData {
 }
 
 interface TodoReOrderData {
-  activeId: string
-  overId: string
+  activeId: UniqueIdentifier
+  overId: UniqueIdentifier
 }
 
 interface TodoContextType {
