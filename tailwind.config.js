@@ -128,7 +128,7 @@ module.exports = {
       },
       ".light-border-and-bg-gradient": {
         background: "transparent",
-        "background-image": "linear-gradient(315deg, #57DDFF,  #C058F3), linear-gradient(315deg, #57DDFF,  #C058F3)",
+        "background-image": "linear-gradient(135deg, #57DDFF,  #C058F3), linear-gradient(135deg, #57DDFF,  #C058F3)",
         "background-clip": "padding-box, border-box",
         "background-origin": "border-box",
         "border": "1px solid transparent",
