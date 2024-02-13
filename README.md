@@ -1,4 +1,4 @@
-# Front-end Style Guide
+# Todo App - Frontend Mentor Challenge
 
 ## Layout
 
